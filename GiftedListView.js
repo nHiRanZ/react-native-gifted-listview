@@ -3,7 +3,7 @@
 var React = require('react');
 
 var {
-  ListView,
+  FlatList,
   Platform,
   TouchableHighlight,
   View,
@@ -187,7 +187,7 @@ export default class GiftedListView extends React.Component {
 
     var ds = null;
     if (this.props.withSections === true) {
-      ds = new ListView.DataSource({
+      ds = new FlatList.DataSource({
         rowHasChanged: this.props.rowHasChanged?this.props.rowHasChanged:(row1, row2) => row1 !== row2,
         sectionHeaderHasChanged: (section1, section2) => section1 !== section2,
       });
@@ -197,7 +197,7 @@ export default class GiftedListView extends React.Component {
         paginationStatus: 'firstLoad',
       };
     } else {
-      ds = new ListView.DataSource({
+      ds = new FlatList.DataSource({
         rowHasChanged: this.props.rowHasChanged?this.props.rowHasChanged:(row1, row2) => row1 !== row2,
       });
       return {
@@ -338,7 +338,7 @@ export default class GiftedListView extends React.Component {
 
   render() {
     return (
-      <ListView
+      <FlatList
         ref="listview"
         dataSource={this.state.dataSource}
         renderRow={this.props.rowView}
